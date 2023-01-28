@@ -1,0 +1,65 @@
+:host{
+   margin: 3%;
+}
+
+.wrapper{
+   max-width: 80%;
+   margin: 0 auto;
+}
+.btn{
+   padding: 10px 40px;
+   background-color: #fff;
+   border: 1px solid rgba(204, 204, 204, 0.807);
+}
+
+.btn1{
+   padding: 10px 40px;
+   background-color: rgb(204, 204, 204);
+   border: 1px solid rgba(204, 204, 204, 0.807);
+}
+
+
+
+.container{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   justify-items: center;
+   text-align: center;
+   border: 1px solid #000;
+   padding: 3%;
+}
+
+.ico{
+   width: 15px;
+   margin-left: 10px;
+   cursor: pointer;
+}
+
+.currency{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   justify-items: center;
+   text-align: center;
+   border-bottom: 1px solid #000;
+   border-left: 1px solid #000;
+   border-right: 1px solid #000;
+   padding: 3%;
+   
+}
+
+@media(max-width:767px){
+   .ico{
+      margin-left: 0px;
+   }
+   input{
+      width: 50%;
+   }
+   .container{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      justify-items: center;
+      text-align: center;
+      border: 1px solid #000;
+      padding: 3%;
+   }
+   }

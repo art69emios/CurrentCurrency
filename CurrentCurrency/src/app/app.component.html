@@ -1,0 +1,133 @@
+<!-- <div class="card">
+
+        <p-table #dt1 [value]="dateArray" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+                [rowsPerPageOptions]="[10,25,50]" [loading]="loading" [paginator]="true"
+                [globalFilterFields]="['dateArray.currency','dateArray.code','dateArray.mid']">
+                <ng-template pTemplate="caption">
+                        <div class="flex">
+                                <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+                                        (click)="clear(dt1)"></button>
+                                <span class="p-input-icon-left ml-auto">
+                                        <i class="pi pi-search"></i>
+                                        <p-calendar [(ngModel)]="selectedDate" dateFormat="yy-mm-dd"
+                                                (click)="getDate()"></p-calendar>
+                                </span>
+                        </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                        <tr>
+                                <th style="min-width:15rem">
+                                        <div class="flex justify-content-center align-items-center">
+                                                Symbol Waluty
+                                                <p-columnFilter type="text" field="dateArray.currency"
+                                                        display="menu" ></p-columnFilter>
+                                                        <input  type="text" (change)="filter(dateArray.currency)">
+                                                        
+                                        </div>
+                                </th>
+                                <th style="min-width:15rem">
+                                        <div class="flex justify-content-center align-items-center">
+                                                Waluta
+                                                <p-columnFilter type="text" field="dateArray.code"
+                                                        display="menu"></p-columnFilter>
+                                        </div>
+                                </th>
+                                <th style="min-width:15rem">
+                                        <div class="flex justify-content-center align-items-center">
+                                                Kurs Waluty
+                                                <p-columnFilter field="dateArray.mid" matchMode="in" display="menu"
+                                                        [showMatchModes]="false" [showOperator]="false"
+                                                        [showAddButton]="false">
+
+                                                </p-columnFilter>
+                                        </div>
+                                </th>
+
+
+
+
+
+                        </tr>
+                </ng-template>
+                <ng-template  pTemplate="body" let-currency>
+                <tr    >
+                    <td>
+                        {{currency.currency}}
+                    </td>
+                    <td>
+                        <span >{{currency.code}}</span>
+                    </td>
+                    <td>
+                       
+                        <span >{{currency.mid}}</span>
+                    </td>
+                    
+                </tr>
+            </ng-template>
+            
+                <ng-template pTemplate="body" let-dateArray>
+                        <tr>
+                                <td>
+                                        {{dateArray.currency}}
+                                </td>
+                                <td>
+                                        {{dateArray.code}}
+                                </td>
+                                <td>
+
+                                        {{dateArray.mid}}
+                                </td>
+
+                        </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                        <tr>
+                                <td colspan="7">No customers found.</td>
+                        </tr>
+                </ng-template>
+
+        </p-table>
+</div> -->
+
+<div class="wrapper">
+        <header>
+                <div class="container">
+                        <div class="row">
+                                <div class="title">Symbol Waluty <img class="ico" src="assets/filter.png" alt=""
+                                                (click)="showFlag()"></div>
+                                <input pInputText [(ngModel)]="value" type="text" (input)="filter()" *ngIf="flag">
+                        </div>
+                        <div class="row">
+                                <div class="title">Waluta <img class="ico" src="assets/filter.png" alt=""
+                                                (click)="flagCode()"></div>
+                                <input pInputText [(ngModel)]="valueCode" type="text" (input)="filterCode()"
+                                        *ngIf="flagForCode">
+                        </div>
+                        <div class="row">
+                                <div class="title">Kurs Waluty </div>
+                        </div>
+                        <p-calendar [(ngModel)]="selectedDate" dateFormat="yy-mm-dd" (click)="getDate()"></p-calendar>
+                </div>
+        </header>
+        <div *ngIf="currencyBool" class="table">
+                <div class="currency" *ngFor="let c of currency">
+                        <div>{{c.currency}}</div>
+                        <div>{{c.code}}</div>
+                        <div>{{c.mid}}</div>
+                </div>
+        </div>
+
+        <div *ngIf="dateBool" class="table">
+                <div class="currency" *ngFor="let c of dateArray">
+                        <div>{{c.currency}}</div>
+                        <div>{{c.code}}</div>
+                        <div>{{c.mid}}</div>
+                </div>
+        </div>
+
+        <div class="box">
+                <h3>Wyberz widok</h3>
+                <button (click)="changeTheme('arya-blue.css')" class="cursor-pointer btn1">Ciemny</button>
+                <button (click)="changeTheme('saga-blue.css')" class="cursor-pointer btn">Jasny</button>
+        </div>
+</div>
