@@ -7,27 +7,34 @@ import { ThemeService } from './servers/theme.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    
+
+    selectedDate: any;
+    dateValue:Date | any;
     dateArray:any;
     dateNow: Date= new Date();
+    currencyBool:boolean = true;
+    dateBool:boolean = false;
+
     currency:any;
-    selectedDate: any;
     currentCurrencyArray:any;
-    dateValue:Date | any;
     value:string = '';
     valueCode:string = '';
     valueMid:any;
-    currencyBool:boolean = true;
-    dateBool:boolean = false;
-    flag:boolean = false;
-    flagForCode:boolean = false;
+   
+
+    loading: boolean = true;
+
+
+
 
     constructor(private themeService: ThemeService)  {}
     ngOnInit(): void {
 
         this.currentCurrencyArray =  this.themeService.getCurrency().subscribe(data =>{
             this.currency = Object(data)[0].rates;
-
+            
+            this.loading = false;
+            
             if(!this.currency){
                 this.currency.error('error')
             }
@@ -39,6 +46,7 @@ export class AppComponent implements OnInit {
 
         let dd:any = this.dateNow?.getDate() ;
             if(dd < 10) dd = '0' + dd;
+            
         }
 
     getDate(){
@@ -59,6 +67,7 @@ export class AppComponent implements OnInit {
 
         this.dateBool = true;
         this.currencyBool = false;
+
         }, err => console.log(err));
     }
     changeTheme(thema:string) {
@@ -94,15 +103,8 @@ export class AppComponent implements OnInit {
             }, err => console.log(err) )
     }
 
-  
-
-    showFlag(){
-        this.flag = true
+    clear(table: any) {
+        table.clear();
     }
-
-    flagCode(){
-        this.flagForCode = true
-    }
-    
 
 }
