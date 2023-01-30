@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
 
 
 
+
     constructor(private themeService: ThemeService)  {}
     ngOnInit(): void {
 
@@ -70,37 +71,10 @@ export class AppComponent implements OnInit {
 
         }, err => console.log(err));
     }
+
+
     changeTheme(thema:string) {
         this.themeService.switchTheme(thema);
-    }
-
-    filter(){
-        this.currentCurrencyArray =  this.themeService.getCurrency().subscribe(data =>{
-            this.currency = Object(data)[0].rates.filter(((item:any) => item.currency.includes(this.value)))
-
-            if(!this.currency){
-                this.currency.error('error')
-            }
-        
-        }, err => console.log(err));
-
-        this.dateArray =  this.themeService.getCurrency().subscribe(data =>{
-            this.dateArray = Object(data)[0].rates.filter(((item:any) => item.currency.includes(this.value)))
-
-            if(!this.dateArray){
-                this.dateArray.error('error')
-            }
-           
-            } , err => console.log(err));
-    }
-
-    filterCode(){
-        this.currentCurrencyArray =  this.themeService.getCurrency().subscribe(data =>{
-            this.currency = Object(data)[0].rates.filter(((item:any) => item.code.includes(this.valueCode.toUpperCase())))
-            } , err => console.log(err))
-        this.dateArray =  this.themeService.getCurrency().subscribe(data =>{
-            this.dateArray = Object(data)[0].rates.filter(((item:any) => item.code.includes(this.valueCode.toUpperCase())))
-            }, err => console.log(err) )
     }
 
     clear(table: any) {
